@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PILGRIMS-COIN | Crypto Platform</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Cover Page -->
+        <div id="cover-page" class="page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <div class="logo-container">
+                        <div class="logo-icon">🪙</div>
+                        <h1>PILGRIMS-COIN</h1>
+                        <p>The Future of Digital Currency</p>
+                    </div>
+                    <div class="auth-buttons">
+                        <button class="btn-primary" onclick="showPage('register-page')">Register</button>
+                        <button class="btn-secondary" onclick="showPage('login-page')">Login</button>
+                        <button class="btn-link" onclick="showPage('forgot-password-page')">Forgot Password?</button>
+                    </div>
+                    <div class="admin-link">
+                        <a href="#" onclick="showPage('admin-login-page')">Admin Login</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="coin-animation">
+                        <div class="coin"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="partners">
+                <div class="partner-logo">Bitcoin.com</div>
+                <div class="partner-logo">Bit Cash</div>
+                <div class="partner-logo">Globalbank</div>
+                <div class="partner-logo">Blockchain</div>
+                <div class="partner-logo">Amazon</div>
+                <div class="partner-logo">iTunes</div>
+                <div class="partner-logo">Apple Pay</div>
+                <div class="partner-logo">Swift</div>
+                <div class="partner-logo">SWISS</div>
+            </div>
+            <footer>
+                <p>© 2024 O. A. A. Pinetree Solution | Partner with Globalbank</p>
+            </footer>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register-page" class="page">
+            <div class="auth-container">
+                <h2>Create Account</h2>
+                <form id="register-form" onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" name="confirmPassword" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Register</button>
+                    <button type="button" class="btn-secondary" onclick="showPage('cover-page')">Back</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <div class="auth-container">
+                <h2>Login</h2>
+                <form id="login-form" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <button type="button" class="btn-secondary" onclick="showPage('cover-page')">Back</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Forgot Password Page -->
+        <div id="forgot-password-page" class="page">
+            <div class="auth-container">
+                <h2>Reset Password</h2>
+                <form id="forgot-password-form" onsubmit="handleForgotPassword(event)">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Reset Link</button>
+                    <button type="button" class="btn-secondary" onclick="showPage('cover-page')">Back</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Login Page -->
+        <div id="admin-login-page" class="page">
+            <div class="auth-container admin-login">
+                <h2>Admin Login</h2>
+                <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Login as Admin</button>
+                    <button type="button" class="btn-secondary" onclick="showPage('cover-page')">Back</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page">
+            <nav class="dashboard-nav">
+                <div class="nav-brand">
+                    <span>🪙</span> PILGRIMS-COIN
+                </div>
+                <div class="nav-menu">
+                    <button onclick="showDashboardSection('wallet-section')">Wallet</button>
+                    <button onclick="showDashboardSection('mining-section')">Mining</button>
+                    <button onclick="showDashboardSection('trading-section')">Trading</button>
+                    <button onclick="showDashboardSection('exchange-section')">Exchange</button>
+                    <button onclick="showDashboardSection('transactions-section')">Transactions</button>
+                    <button onclick="showDashboardSection('investment-section')">Investment</button>
+                    <button onclick="handleLogout()">Logout</button>
+                </div>
+            </nav>
+
+            <div class="dashboard-content">
+                <!-- Wallet Section -->
+                <div id="wallet-section" class="dashboard-section active">
+                    <h2>My Wallet</h2>
+                    <div class="wallet-cards">
+                        <div class="wallet-card coin-wallet">
+                            <div class="wallet-icon">🪙</div>
+                            <div class="wallet-name">PILGRIMS-COIN</div>
+                            <div class="wallet-balance" id="coin-balance">0.00000000</div>
+                            <div class="wallet-address" id="coin-address">Generating...</div>
+                            <div class="wallet-barcode" id="coin-barcode">
+                                <div class="barcode-lines"></div>
+                                <div class="barcode-text" id="coin-barcode-text">PILGRIMS-COIN</div>
+                            </div>
+                        </div>
+                        <div class="wallet-card cash-wallet">
+                            <div class="wallet-icon">💵</div>
+                            <div class="wallet-name">PILGRIMS-CASH (USD)</div>
+                            <div class="wallet-balance" id="cash-balance">$0.00000000</div>
+                            <div class="wallet-address" id="cash-address">Generating...</div>
+                            <div class="wallet-barcode" id="cash-barcode">
+                                <div class="barcode-lines"></div>
+                                <div class="barcode-text" id="cash-barcode-text">PILGRIMS-CASH</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wallet-actions">
+                        <button class="btn-primary" onclick="showModal('deposit-modal')">Deposit</button>
+                        <button class="btn-secondary" onclick="showModal('withdraw-modal')">Withdraw</button>
+                        <button class="btn-secondary" onclick="showModal('send-modal')">Send</button>
+                        <button class="btn-secondary" onclick="showModal('receive-modal')">Receive</button>
+                        <button class="btn-secondary" onclick="showModal('calculator-modal')">Calculator</button>
+                    </div>
+                    
+                    <div class="payment-methods-section">
+                        <h3>Accepted Payment Methods</h3>
+                        <div class="payment-methods-grid">
+                            <div class="payment-method">
+                                <span class="method-icon">🏦</span>
+                                <span>BVN</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">🆔</span>
+                                <span>NIN</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">🌐</span>
+                                <span>Swift Code</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">🇨🇭</span>
+                                <span>SWISS Code</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">⛓️</span>
+                                <span>Blockchain</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">₿</span>
+                                <span>Bitcoin.com</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">📦</span>
+                                <span>Amazon</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">🎵</span>
+                                <span>iTunes</span>
+                            </div>
+                            <div class="payment-method">
+                                <span class="method-icon">🍎</span>
+                                <span>Apple Pay</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trading-platforms-section">
+                        <h3>Connected Trading Platforms</h3>
+                        <div class="trading-platforms-grid">
+                            <div class="trading-platform">
+                                <span class="platform-icon">📊</span>
+                                <span>Pocket Data Trading</span>
+                                <button class="connect-btn" onclick="connectPlatform('pocket')">Connect</button>
+                            </div>
+                            <div class="trading-platform">
+                                <span class="platform-icon">🧠</span>
+                                <span>IQ Trading</span>
+                                <button class="connect-btn" onclick="connectPlatform('iq')">Connect</button>
+                            </div>
+                            <div class="trading-platform">
+                                <span class="platform-icon">👨‍💼</span>
+                                <span>Expert Trading</span>
+                                <button class="connect-btn" onclick="connectPlatform('expert')">Connect</button>
+                            </div>
+                            <div class="trading-platform">
+                                <span class="platform-icon">💱</span>
+                                <span>FX Trading</span>
+                                <button class="connect-btn" onclick="connectPlatform('fx')">Connect</button>
+                            </div>
+                            <div class="trading-platform">
+                                <span class="platform-icon">🪙</span>
+                                <span>Crypto Trading</span>
+                                <button class="connect-btn" onclick="connectPlatform('crypto')">Connect</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mining Section -->
+                <div id="mining-section" class="dashboard-section">
+                    <h2>Mining PILGRIMS-COIN</h2>
+                    <div class="mining-status">
+                        <div class="mining-info">
+                            <div class="mining-stat">
+                                <label>Mining Rate:</label>
+                                <span>1.0 PILGRIMS-COIN = 0.5 USD</span>
+                            </div>
+                            <div class="mining-stat">
+                                <label>Status:</label>
+                                <span id="mining-status" class="status-stopped">Stopped</span>
+                            </div>
+                            <div class="mining-stat">
+                                <label>Mined Today:</label>
+                                <span id="mined-today">0.00000000 PILGRIMS</span>
+                            </div>
+                            <div class="mining-stat">
+                                <label>Total Mined:</label>
+                                <span id="total-mined">0.00000000 PILGRIMS</span>
+                            </div>
+                        </div>
+                        <div class="mining-actions">
+                            <button class="btn-primary" id="start-mining-btn" onclick="toggleMining()">Start Mining</button>
+                            <button class="btn-secondary" onclick="pauseMining()">Pause Mining</button>
+                        </div>
+                    </div>
+                    <div class="mining-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="mining-progress" style="width: 0%"></div>
+                        </div>
+                        <div class="mining-log" id="mining-log">
+                            <p>Mining log will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trading Section -->
+                <div id="trading-section" class="dashboard-section">
+                    <h2>Trading Terminal</h2>
+                    <div class="trading-container">
+                        <div class="trading-chart">
+                            <h3>Price Chart</h3>
+                            <div class="chart-placeholder">
+                                <p>Price: $0.50 USD per PILGRIMS-COIN</p>
+                                <div class="price-info">
+                                    <span>24h Change: <span class="positive">+2.5%</span></span>
+                                    <span>24h Volume: 1,234,567 PILGRIMS</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="trading-forms">
+                            <div class="trading-form">
+                                <h3>Buy PILGRIMS-COIN</h3>
+                                <form onsubmit="handleBuy(event)">
+                                    <div class="form-group">
+                                        <label>Amount (USD)</label>
+                                        <input type="number" step="0.00000001" name="buyAmount" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>You will receive:</label>
+                                        <div class="calculated-amount" id="buy-calculated">0.00000000 PILGRIMS</div>
+                                    </div>
+                                    <button type="submit" class="btn-primary">Buy</button>
+                                </form>
+                            </div>
+                            <div class="trading-form">
+                                <h3>Sell PILGRIMS-COIN</h3>
+                                <form onsubmit="handleSell(event)">
+                                    <div class="form-group">
+                                        <label>Amount (PILGRIMS)</label>
+                                        <input type="number" step="0.00000001" name="sellAmount" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>You will receive:</label>
+                                        <div class="calculated-amount" id="sell-calculated">$0.00000000 USD</div>
+                                    </div>
+                                    <button type="submit" class="btn-primary">Sell</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exchange Section -->
+                <div id="exchange-section" class="dashboard-section">
+                    <h2>Crypto Exchange</h2>
+                    <div class="exchange-forms">
+                        <div class="exchange-form">
+                            <h3>Exchange PILGRIMS-COIN</h3>
+                            <form onsubmit="handleExchange(event)">
+                                <div class="form-group">
+                                    <label>From</label>
+                                    <select name="fromCurrency" onchange="calculateExchange()">
+                                        <option value="PILGRIMS">PILGRIMS-COIN</option>
+                                        <option value="BTC">Bitcoin</option>
+                                        <option value="ETH">Ethereum</option>
+                                        <option value="USD">US Dollar</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="number" step="0.00000001" name="exchangeAmount" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>To</label>
+                                    <select name="toCurrency" onchange="calculateExchange()">
+                                        <option value="USD">US Dollar</option>
+                                        <option value="BTC">Bitcoin</option>
+                                        <option value="ETH">Ethereum</option>
+                                        <option value="PILGRIMS">PILGRIMS-COIN</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>You will receive:</label>
+                                    <div class="calculated-amount" id="exchange-calculated">0.00000000</div>
+                                </div>
+                                <button type="submit" class="btn-primary">Exchange</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transactions Section -->
+                <div id="transactions-section" class="dashboard-section">
+                    <h2>Transaction History</h2>
+                    <div class="transaction-filters">
+                        <select id="transaction-filter" onchange="filterTransactions()">
+                            <option value="all">All Transactions</option>
+                            <option value="deposit">Deposits</option>
+                            <option value="withdrawal">Withdrawals</option>
+                            <option value="send">Sent</option>
+                            <option value="receive">Received</option>
+                            <option value="exchange">Exchanges</option>
+                        </select>
+                    </div>
+                    <div class="transactions-list" id="transactions-list">
+                        <p class="no-transactions">No transactions yet</p>
+                    </div>
+                </div>
+
+                <!-- Investment Section -->
+                <div id="investment-section" class="dashboard-section">
+                    <h2>PILGRIMS Investment</h2>
+                    <div class="investment-options">
+                        <div class="investment-card">
+                            <h3>Basic Plan</h3>
+                            <div class="investment-returns">5% daily</div>
+                            <div class="investment-min">Min: 100 PILGRIMS</div>
+                            <div class="investment-duration">Duration: 30 days</div>
+                            <button class="btn-primary" onclick="showModal('invest-modal')">Invest Now</button>
+                        </div>
+                        <div class="investment-card">
+                            <h3>Premium Plan</h3>
+                            <div class="investment-returns">10% daily</div>
+                            <div class="investment-min">Min: 500 PILGRIMS</div>
+                            <div class="investment-duration">Duration: 60 days</div>
+                            <button class="btn-primary" onclick="showModal('invest-modal')">Invest Now</button>
+                        </div>
+                        <div class="investment-card">
+                            <h3>VIP Plan</h3>
+                            <div class="investment-returns">15% daily</div>
+                            <div class="investment-min">Min: 1000 PILGRIMS</div>
+                            <div class="investment-duration">Duration: 90 days</div>
+                            <button class="btn-primary" onclick="showModal('invest-modal')">Invest Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Admin Dashboard -->
+        <div id="admin-dashboard-page" class="page">
+            <nav class="admin-nav">
+                <div class="nav-brand">
+                    <span>👑</span> Admin Dashboard
+                </div>
+                <div class="nav-menu">
+                    <button onclick="showAdminSection('admin-customers')">Customers</button>
+                    <button onclick="showAdminSection('admin-transactions')">Transactions</button>
+                    <button onclick="showAdminSection('admin-blockchain')">Blockchain</button>
+                    <button onclick="handleAdminLogout()">Logout</button>
+                </div>
+            </nav>
+
+            <div class="admin-content">
+                <div class="admin-header">
+                    <h2>Welcome, Olawale Abdul-Ganiyu</h2>
+                    <p>Administrator - O. A. A. Pinetree Solution</p>
+                </div>
+
+                <!-- Admin Customers Section -->
+                <div id="admin-customers" class="admin-section active">
+                    <h3>Customer Management</h3>
+                    <div class="customer-search">
+                        <input type="text" placeholder="Search customers..." id="customer-search" oninput="searchCustomers()">
+                    </div>
+                    <div class="customers-list" id="customers-list">
+                        <p>No customers registered yet</p>
+                    </div>
+                </div>
+
+                <!-- Admin Transactions Section -->
+                <div id="admin-transactions" class="admin-section">
+                    <h3>All Transactions</h3>
+                    <div class="transactions-list" id="admin-transactions-list">
+                        <p>No transactions yet</p>
+                    </div>
+                </div>
+
+                <!-- Admin Blockchain Section -->
+                <div id="admin-blockchain" class="admin-section">
+                    <h3>Blockchain Management</h3>
+                    <div class="blockchain-status">
+                        <div class="status-card">
+                            <h4>PILGRIMS-COIN Status</h4>
+                            <div class="status-indicator active">✓ Registered</div>
+                            <div class="status-info">
+                                <p>Bitcoin.com: Integrated</p>
+                                <p>Bit Cash: Integrated</p>
+                                <p>Globalbank: Connected</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div id="deposit-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('deposit-modal')">&times;</span>
+                <h2>Deposit</h2>
+                <div class="deposit-options">
+                    <button class="deposit-option" onclick="showDepositMethod('crypto')">Crypto</button>
+                    <button class="deposit-option" onclick="showDepositMethod('card')">Card</button>
+                    <button class="deposit-option" onclick="showDepositMethod('bank')">Bank Transfer</button>
+                    <button class="deposit-option" onclick="showDepositMethod('bvn')">BVN Deposit</button>
+                    <button class="deposit-option" onclick="showDepositMethod('nin')">NIN Deposit</button>
+                    <button class="deposit-option" onclick="showDepositMethod('swift')">Swift Code</button>
+                    <button class="deposit-option" onclick="showDepositMethod('swiss')">SWISS Code</button>
+                    <button class="deposit-option" onclick="showDepositMethod('blockchain')">Blockchain</button>
+                    <button class="deposit-option" onclick="showDepositMethod('bitcoin')">Bitcoin.com</button>
+                    <button class="deposit-option" onclick="showDepositMethod('amazon')">Amazon</button>
+                    <button class="deposit-option" onclick="showDepositMethod('itunes')">iTunes</button>
+                    <button class="deposit-option" onclick="showDepositMethod('apple')">Apple Pay</button>
+                </div>
+                <div class="trading-deposit-section">
+                    <h3>Trading Platform Deposits</h3>
+                    <div class="trading-options">
+                        <button class="deposit-option" onclick="showDepositMethod('pocket')">Pocket Data Trading</button>
+                        <button class="deposit-option" onclick="showDepositMethod('iq')">IQ Trading</button>
+                        <button class="deposit-option" onclick="showDepositMethod('expert')">Expert Trading</button>
+                        <button class="deposit-option" onclick="showDepositMethod('fx')">FX Trading</button>
+                        <button class="deposit-option" onclick="showDepositMethod('crypto-trading')">Other Crypto Trading</button>
+                    </div>
+                </div>
+                <div id="deposit-method-form" class="hidden"></div>
+            </div>
+        </div>
+
+        <div id="withdraw-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('withdraw-modal')">&times;</span>
+                <h2>Withdraw</h2>
+                <form onsubmit="handleWithdraw(event)">
+                    <div class="form-group">
+                        <label>Select Wallet</label>
+                        <select name="withdrawWallet" required>
+                            <option value="coin">PILGRIMS-COIN</option>
+                            <option value="cash">PILGRIMS-CASH</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" step="0.00000001" name="withdrawAmount" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Destination</label>
+                        <select name="withdrawDestination" onchange="toggleWithdrawDestination()">
+                            <option value="wallet">Wallet Address</option>
+                            <option value="bank">Bank Account</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="wallet-address-group">
+                        <label>Wallet Address</label>
+                        <input type="text" name="walletAddress">
+                    </div>
+                    <div class="form-group hidden" id="bank-details-group">
+                        <label>Bank Name</label>
+                        <input type="text" name="bankName">
+                        <label>Account Number</label>
+                        <input type="text" name="accountNumber">
+                        <label>Account Name</label>
+                        <input type="text" name="accountName">
+                    </div>
+                    <button type="submit" class="btn-primary">Withdraw</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="send-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('send-modal')">&times;</span>
+                <h2>Send Crypto</h2>
+                <form onsubmit="handleSend(event)">
+                    <div class="form-group">
+                        <label>From Wallet</label>
+                        <select name="sendWallet" required>
+                            <option value="coin">PILGRIMS-COIN</option>
+                            <option value="cash">PILGRIMS-CASH</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Recipient Wallet Address</label>
+                        <input type="text" name="recipientAddress" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" step="0.00000001" name="sendAmount" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="receive-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('receive-modal')">&times;</span>
+                <h2>Receive Crypto</h2>
+                <div class="receive-options">
+                    <div class="receive-option" onclick="showReceiveInfo('coin')">
+                        <h3>PILGRIMS-COIN</h3>
+                        <p id="receive-coin-address">Loading...</p>
+                    </div>
+                    <div class="receive-option" onclick="showReceiveInfo('cash')">
+                        <h3>PILGRIMS-CASH</h3>
+                        <p id="receive-cash-address">Loading...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="invest-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('invest-modal')">&times;</span>
+                <h2>Invest in PILGRIMS</h2>
+                <form onsubmit="handleInvest(event)">
+                    <div class="form-group">
+                        <label>Select Plan</label>
+                        <select name="investmentPlan" required>
+                            <option value="basic">Basic (5% daily)</option>
+                            <option value="premium">Premium (10% daily)</option>
+                            <option value="vip">VIP (15% daily)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount (PILGRIMS)</label>
+                        <input type="number" step="0.00000001" name="investmentAmount" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Invest</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="credit-debit-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('credit-debit-modal')">&times;</span>
+                <h2>Credit/Debit Customer</h2>
+                <form onsubmit="handleCreditDebit(event)">
+                    <input type="hidden" name="customerId" id="credit-debit-customer-id">
+                    <div class="form-group">
+                        <label>Action</label>
+                        <select name="action" required>
+                            <option value="credit">Credit</option>
+                            <option value="debit">Debit</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Wallet Type</label>
+                        <select name="walletType" required>
+                            <option value="coin">PILGRIMS-COIN</option>
+                            <option value="cash">PILGRIMS-CASH</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" step="0.00000001" name="amount" required>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+
+        <div id="calculator-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('calculator-modal')">&times;</span>
+                <h2>Crypto Calculator</h2>
+                <div class="calculator">
+                    <div class="calculator-display" id="calc-display">0</div>
+                    <div class="calculator-buttons">
+                        <button class="calc-btn" onclick="calcInput('7')">7</button>
+                        <button class="calc-btn" onclick="calcInput('8')">8</button>
+                        <button class="calc-btn" onclick="calcInput('9')">9</button>
+                        <button class="calc-btn operator" onclick="calcInput('/')">÷</button>
+                        <button class="calc-btn" onclick="calcInput('4')">4</button>
+                        <button class="calc-btn" onclick="calcInput('5')">5</button>
+                        <button class="calc-btn" onclick="calcInput('6')">6</button>
+                        <button class="calc-btn operator" onclick="calcInput('*')">×</button>
+                        <button class="calc-btn" onclick="calcInput('1')">1</button>
+                        <button class="calc-btn" onclick="calcInput('2')">2</button>
+                        <button class="calc-btn" onclick="calcInput('3')">3</button>
+                        <button class="calc-btn operator" onclick="calcInput('-')">−</button>
+                        <button class="calc-btn" onclick="calcInput('0')">0</button>
+                        <button class="calc-btn" onclick="calcInput('.')">.</button>
+                        <button class="calc-btn operator" onclick="calcInput('+')">+</button>
+                        <button class="calc-btn equals" onclick="calcResult()">=</button>
+                        <button class="calc-btn" onclick="calcClear()" style="grid-column: span 2;">Clear</button>
+                        <button class="calc-btn" onclick="calcBackspace()">⌫</button>
+                        <button class="calc-btn" onclick="convertCrypto()" style="grid-column: span 2;">Convert</button>
+                    </div>
+                    <div class="crypto-converter">
+                        <div class="form-group">
+                            <label>Convert from:</label>
+                            <select id="convert-from" onchange="updateConversion()">
+                                <option value="PILGRIMS">PILGRIMS-COIN</option>
+                                <option value="BTC">Bitcoin</option>
+                                <option value="ETH">Ethereum</option>
+                                <option value="USD">USD</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Convert to:</label>
+                            <select id="convert-to" onchange="updateConversion()">
+                                <option value="USD">USD</option>
+                                <option value="PILGRIMS">PILGRIMS-COIN</option>
+                                <option value="BTC">Bitcoin</option>
+                                <option value="ETH">Ethereum</option>
+                            </select>
+                        </div>
+                        <div class="conversion-result" id="conversion-result">
+                            Enter amount to convert
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

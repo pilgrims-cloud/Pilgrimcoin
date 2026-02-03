@@ -1,0 +1,11 @@
+            <div class="partners">
+                <div class="partner-logo">Bitcoin.com</div>
+                <div class="partner-logo">Bit Cash</div>
+                <div class="partner-logo">Globalbank</div>
+                <div class="partner-logo">Blockchain</div>
+            </div>
+            <footer>
+                <p>© 2024 O. A. A. Pinetree Solution | Partner with Globalbank</p>
+            </footer>
+        </div>
+
